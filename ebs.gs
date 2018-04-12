@@ -3,7 +3,7 @@ function get_ebs_price(region, type_name, sub_price) {
   var data = eval(getPriceData("http://a0.awsstatic.com/pricing/1/ebs/pricing-ebs.min.js"));
   var regions = data['config']['regions'];
   for (var i = 0; i < regions.length; i++) {
-    if(regions[i]['region'] == getOdRegion(region)) {
+    if(regions[i]['region'] == region) {
       var types = regions[i]['types'];
       for (var j = 0; j < types.length; j++) {
         if(types[j]['name'] == type_name) {
@@ -22,7 +22,7 @@ function get_ebs_price(region, type_name, sub_price) {
  * @customfunction
  */
 function EBS_GP2_STORAGE(region) {
-  return get_ebs_price(region, "Amazon EBS General Purpose SSD (gp2) volumes");
+  return get_ebs_price(region, "ebsGPSSD");
 }
 
 /**
